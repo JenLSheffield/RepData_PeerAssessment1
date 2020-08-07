@@ -16,7 +16,7 @@ activities <- read.csv( 'activity.csv' )
 
 ## What is mean total number of steps taken per day?
 
-First calculate the total steps each day (ignoring NAs) and plot as a histogram.\
+First we'll calculate the total steps each day (ignoring NAs) and plot as a histogram.\
 We'll use breakpoints that balance prettiness and readability!
 
 Pre-examination of the dataset shows that each date with any NA value has all NA values, 
@@ -32,7 +32,7 @@ hist( totSteps[ , 2 ], breaks = seq( 0, 24000, by = 2000 ),
       main = 'Histogram of total steps per day', 
       xlab = 'Total steps',
       col = 'cadetblue',
-      border = 'grey30' )
+      border = 'grey31' )
 axis( 1, at = seq( 0, 24000, by = 4000 ))
 ```
 
@@ -66,7 +66,7 @@ stepsByInt <- aggregate( activities$steps, by=list( activities$interval ), FUN=m
 colnames( stepsByInt ) <- c( 'interval', 'steps' )
 
 plot( stepsByInt$interval, stepsByInt$steps, type = 'l', col = 'cadetblue',
-      main = 'Mean steps by daily interval', xlab = 'Interval', ylab = 'Mean steps'  )
+      main = 'Mean steps by interval', xlab = 'Interval', ylab = 'Mean steps'  )
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
@@ -222,7 +222,7 @@ hist( totStepsImp[ , 2 ], breaks = seq( 0, 24000, by = 2000 ),
       main = 'Histogram of total steps per day\n (missing values imputed)', 
       xlab = 'Total steps',
       col = 'cadetblue',
-      border = 'grey30' )
+      border = 'grey31' )
 axis( 1, at = seq( 0, 24000, by = 4000 ))
 ```
 
@@ -271,10 +271,10 @@ colnames( stepsByWkInt ) <- c( 'Day', 'Interval', 'Steps' )
 par( mfrow = c( 1, 2 ))
 plot( stepsByWkInt$Interval[ which( stepsByWkInt == 'Weekday' )],
       stepsByWkInt$Steps[ which( stepsByWkInt == 'Weekday' )], type = 'l', ylim = c( 0, 250 ),
-      col = 'firebrick4', main = 'Weekdays', xlab = 'Interval', ylab = 'Mean steps' )
+      col = 'firebrick4', main = 'Weekday steps', xlab = 'Interval', ylab = 'Mean steps' )
 plot( stepsByWkInt$Interval[ which( stepsByWkInt == 'Weekend' )],
       stepsByWkInt$Steps[ which( stepsByWkInt == 'Weekend' )], type = 'l', ylim = c( 0, 250 ),
-      col = 'cadetblue', main = 'Weekends', xlab = 'Interval', ylab = 'Mean steps')
+      col = 'cadetblue', main = 'Weekend steps', xlab = 'Interval', ylab = 'Mean steps')
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
